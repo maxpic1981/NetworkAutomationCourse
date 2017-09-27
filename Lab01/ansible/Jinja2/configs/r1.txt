@@ -1,0 +1,8 @@
+logging host 20.20.20.20
+!
+snmp-server community test RO
+snmp-server location rack-1
+snmp-server contact test@test.com
+snmp-server chassis-id
+snmp-server host 10.10.10.10 test
+

@@ -1,0 +1,6 @@
+---
+ansible_user: automate
+snmp_community: test
+snmp_contact: test@test.com
+snmp_host: 10.10.10.10
+syslog_host: 20.20.20.20

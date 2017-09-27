@@ -4,4 +4,4 @@
   tasks:
   - raw: "show version"
     register: show
-  - debug: var=show.stdout_lines
+  - debug: var=vars

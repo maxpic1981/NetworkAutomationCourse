@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  name: Create directory
+  tasks:
+  - file: path=configs state=directory
+
+- hosts: ios
+  tasks:
+  - template: src=ios/common.j2 dest=configs/{{inventory_hostname}}.txt
+    name: create configuration for IOS devices
