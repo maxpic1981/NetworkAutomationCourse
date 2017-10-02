@@ -1,0 +1,7 @@
+[ios]
+r1 ansible_device_os=ios
+r2 ansible_device_os=ios
+r3 ansible_device_os=ios
+
+[all:vars]
+ansible_user=automate
