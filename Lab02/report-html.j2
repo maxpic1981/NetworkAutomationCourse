@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>Hostname</th>
+            <th>Model Type</th>
+			<th>Serial Number</th>
+			<th>Code Version</th>
+			<th>Uptime</th>
+            <th>Interface</th>
+			<th>IP Address</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for router in groups['ios'] %}
+<br>
+        <tr>
+            <td>{{ hostvars[router].ansible_net_hostname }}</td>
+            <td>{{ hostvars[router].ansible_net_model }}</td>
+			<td>{{ hostvars[router].ansible_net_serialnum }}</td>
+            <td>{{ hostvars[router].ansible_net_version }}</td>
+			<td>{{ hostvars[router].printout_version.stdout_lines[0] | to_nice_yaml }}</td>
+			<td>
+			{% for interface in hostvars[router].intf %}
+				{{ interface }}<br>
+			{% endfor %}	
+			</td>
+			<td>
+			{% for ipaddress in hostvars[router].ipaddr %}
+				{{ ipaddress }} <br>
+			{% endfor %}			
+			</td>
+		</tr>
+{% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

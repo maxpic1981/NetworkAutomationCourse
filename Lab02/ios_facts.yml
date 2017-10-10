@@ -1,0 +1,49 @@
+---
+
+- hosts: localhost
+  tasks:
+  - file: path=./generated_report.html state=absent
+    run_once : true
+  - file: path=./generated_report.html state=touch
+    run_once : true    
+
+- hosts: ios
+  tasks:
+   - name: Collect all facts from the facts
+     ios_facts:
+       gather_subset: all
+       provider: "{{cli}}"
+     register: all_facts  
+   - debug:
+       var: all_facts
+
+ 
+- hosts: ios
+  tasks:
+   - name: Collect the uptime from the CLI
+     ios_command:
+       provider: "{{cli}}"
+       commands: show version | inc uptime
+     register: printout_version  
+ #  - set_fact:
+ #      version: "{{ printout_version.stdout_lines[0] | to_nice_yaml(indent=2) }}"
+ 
+- hosts: ios
+  tasks:
+   - name: Collect interfaces facts from the CLI
+     ios_command:
+       provider: "{{cli}}"
+       commands: "show ip interface brief | exclude Interface"
+     register: printout
+   - set_fact:
+       intf:  "{{printout.stdout_lines[0] | map('regex_findall','^([A-Za-z]+[0-9./]+)') | map('join') | list }}"
+       ipaddr:  "{{printout.stdout_lines[0] | map('regex_replace','.*\\s+(?P<ip>[0-9.]+)\\s+.*','\\g<ip>') | list }}" 
+   - debug:
+       var: ipaddr
+       
+   - name: Create HTML report
+     template:
+       src: report-html.j2
+       dest: ./generated_report.html
+     delegate_to: localhost
+     run_once: true   

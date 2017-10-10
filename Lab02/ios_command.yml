@@ -1,0 +1,29 @@
+# Note: examples below use the following provider dict to handle
+#       transport and authentication to the node.
+---
+
+- hosts: localhost
+  tasks:
+  - file: path=./generated_report.html state=absent
+    run_once : true
+  - file: path=./generated_report.html state=touch
+    run_once : true    
+
+- hosts: ios
+  tasks:
+   - name: Collect all facts from the device
+     ios_command:
+       provider: "{{cli}}"
+       commands: "show ip interface brief | exclude Interface"
+     register: printout
+   - set_fact:
+       intf:  "{{printout.stdout_lines[0]|map('regex_findall','^([A-Za-z]+[0-9./]+)')|map('join')|list}}"
+   - debug:
+        var: intf
+ 
+   #- name: create HTML report
+   #  template:
+   #   src: report.j2
+   #    dest: ./generated_report.html
+   #  delegate_to: localhost
+   #  run_once: true   
