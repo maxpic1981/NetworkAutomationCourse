@@ -1,0 +1,13 @@
+---
+
+- hosts: localhost
+  name: Create directory
+  tasks:
+  - file: path=configs state=directory
+
+- hosts: ios  
+  name: Includes tasks
+  tasks:
+   - import_tasks: tasks/config-common.yml
+     
+   

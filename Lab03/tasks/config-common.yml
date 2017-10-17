@@ -1,0 +1,5 @@
+---
+
+  - name: Create common configuration for IOS devices
+    template: src=templates/common.j2 dest=configs/{{inventory_hostname}}.txt
+  
