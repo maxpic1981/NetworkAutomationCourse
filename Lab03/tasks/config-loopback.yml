@@ -1,0 +1,5 @@
+---
+
+  - name: Create Loopback interface configuration for IOS devices
+    template: src=templates/config-loopback.j2 dest=configs/loopback-{{inventory_hostname}}.conf
+  

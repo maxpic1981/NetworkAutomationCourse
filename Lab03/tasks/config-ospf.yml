@@ -1,0 +1,5 @@
+---
+
+  - name: Create OSPF configuration for IOS devices
+    template: src=templates/config-ospf.j2 dest=configs/ospf-{{inventory_hostname}}.conf
+  

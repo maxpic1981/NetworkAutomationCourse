@@ -1,0 +1,7 @@
+!
+router ospf {{ ospf_process }}
+ router-id {{id}}.{{id}}.{{id}}.{{id}}
+{% for intf in ports %}
+ network {{ports[intf].subnet}} 0.0.0.{{ports[intf].mask_ospf}} area {{ports[intf].area}} 
+{% endfor %}
+!

@@ -1,0 +1,5 @@
+---
+
+  - name: Interface configuration for IOS devices
+    template: src=templates/config-interfaces.j2 dest=configs/interfaces-{{inventory_hostname}}.conf
+  

@@ -1,4 +1,5 @@
 [ios]
-r1 ansible_device_os=ios
-r2 ansible_device_os=ios
-r3 ansible_device_os=ios
+P1 ansible_device_os=ios
+P2 ansible_device_os=ios
+PE-1 ansible_device_os=ios
+PE-2 ansible_device_os=ios

@@ -1,0 +1,15 @@
+!
+{% if ports is defined %}
+{% for intf in ports %}
+interface {{ports[intf].interface}}
+ description {{ports[intf].description}}
+ ip address {{ports[intf].ip_address}} {{ports[intf].mask}}
+ {% if ports[intf].interface != 'loopback0' %}
+speed 100
+ full-duplex
+ {% endif %}
+no shutdown
+!
+{% endfor %}
+!
+{% endif %}
