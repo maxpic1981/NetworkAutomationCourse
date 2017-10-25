@@ -1,0 +1,19 @@
+---
+
+- hosts: localhost
+  name: Create directory
+  tasks:
+  - file: path=configs state=directory
+  
+- hosts: ios  
+  name: "Generating configuration file"
+  tasks:
+   - import_tasks: tasks/config-mpls.yml
+
+- hosts: ios
+  tasks:
+  - name: "Configure MPLS on interfaces"
+    ios_config:
+      provider: "{{cli}}"
+      src: "configs/MPLS-{{inventory_hostname}}.conf"
+        

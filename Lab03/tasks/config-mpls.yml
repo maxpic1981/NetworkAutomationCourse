@@ -1,0 +1,5 @@
+---
+
+  - name: Create MPLS configuration for IOS devices
+    template: src=templates/config-mpls.j2 dest=configs/MPLS-{{inventory_hostname}}.conf
+  
