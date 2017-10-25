@@ -9,7 +9,6 @@
   name: executing includes tasks
   tasks:
    - import_tasks: tasks/config-common.yml
-#   - import_tasks: tasks/config-loopback.yml
    - import_tasks: tasks/config-interfaces.yml
    - import_tasks: tasks/config-ospf.yml
    - file: path=configs/Config-{{inventory_hostname}}.conf state=absent
@@ -17,8 +16,8 @@
    - assemble: src=configs/ dest=configs/Config-{{inventory_hostname}}.conf regexp="{{inventory_hostname}}.conf"
    - file: path=configs/common-{{inventory_hostname}}.conf state=absent
    - file: path=configs/ospf-{{inventory_hostname}}.conf state=absent
-#   - file: path=configs/loopback-{{inventory_hostname}}.conf state=absent
    - file: path=configs/interfaces-{{inventory_hostname}}.conf state=absent   
+ 
 #   - blockinfile:
 #      marker: "! COMMON configuration"
 #      path: configs/Config-{{inventory_hostname}}.conf

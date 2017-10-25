@@ -1,5 +1,5 @@
 [ios]
-P1 ansible_device_os=ios
-P2 ansible_device_os=ios
-PE-1 ansible_device_os=ios
-PE-2 ansible_device_os=ios
+P1 ansible_host=10.0.10.1 ansible_device_os=ios
+P2 ansible_host=2.2.2.2 ansible_device_os=ios
+PE-1 ansible_host=3.3.3.3 ansible_device_os=ios
+PE-2 ansible_host=4.4.4.4 ansible_device_os=ios

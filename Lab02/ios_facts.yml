@@ -14,8 +14,8 @@
        gather_subset: all
        provider: "{{cli}}"
      register: all_facts  
-   - debug:
-       var: all_facts
+ #  - debug:
+ #     var: all_facts
 
  
 - hosts: ios
@@ -38,8 +38,8 @@
    - set_fact:
        intf:  "{{printout.stdout_lines[0] | map('regex_findall','^([A-Za-z]+[0-9./]+)') | map('join') | list }}"
        ipaddr:  "{{printout.stdout_lines[0] | map('regex_replace','.*\\s+(?P<ip>[0-9.]+)\\s+.*','\\g<ip>') | list }}" 
-   - debug:
-       var: ipaddr
+ #  - debug:
+ #      var: ipaddr
        
    - name: Create HTML report
      template:

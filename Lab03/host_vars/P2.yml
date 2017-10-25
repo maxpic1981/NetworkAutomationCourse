@@ -10,6 +10,7 @@ ports:
     subnet:     10.1.0.0
     mask_ospf:  3
     area:   0
+    mpls: 'yes'
   1: 
     interface: 'fastethernet0/0'
     description: 'Lien P2-PE1'
@@ -18,9 +19,10 @@ ports:
     subnet:     10.1.0.16
     mask_ospf:  3
     area:   0
+    mpls: 'yes'
   2: 
     interface: 'loopback0'
-    description: 'Loopback'
+    description: 'Loopback0'
     ip_address:  2.2.2.2
     mask:     255.255.255.255
     subnet:     2.2.2.2
@@ -34,3 +36,4 @@ ports:
     subnet:     10.1.0.12
     mask_ospf:  3
     area:   0
+    mpls: 'yes'
