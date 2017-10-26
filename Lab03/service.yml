@@ -8,12 +8,36 @@
 - hosts: ios  
   name: "Generating configuration file"
   tasks:
-   - import_tasks: tasks/config-mpls.yml
+   - import_tasks: tasks/config-mpls.yml  
 
-- hosts: ios
+#- hosts: ios
+#  name: Collect configurations
+#  tasks:
+#  - ios_command:
+#      provider: "{{cli}}"
+#      commands: show running
+#    register: running
+#  - copy:  
+#      content: "{{ running.stdout[0] }}" 
+#      dest: "configs/{{inventory_hostname}}.cfg"
+ 
+#- hosts: all
+#  tasks:
+#  - name: "Configure MPLS on interfaces"
+#    ios_config:
+#      provider: "{{cli}}"
+#      parents: 
+#        - "interface {{item.value.interface}}"
+#      lines:
+#        - "mpls ip" 
+#      running_config: configs/{{inventory_hostname}}.cfg
+#    with_dict: "{{ ports }}"
+
+- hosts: all
   tasks:
-  - name: "Configure MPLS on interfaces"
+  - name: "Configure MPLS on interfaces"      
     ios_config:
       provider: "{{cli}}"
       src: "configs/MPLS-{{inventory_hostname}}.conf"
+      save_when: modified
         

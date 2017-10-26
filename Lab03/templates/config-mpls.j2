@@ -1,8 +1,10 @@
 {% for intf in ports %}
-{% if ports[intf].interface != 'loopback0' %}
 interface {{ports[intf].interface}}
+{% if ports[intf].interface != 'loopback' %}
 {% if ports[intf].mpls is defined %}
  mpls ip
+ {% else %}
+ no mpls ip
+ {% endif %}
 {% endif %}
-  {% endif %}
 {% endfor %}

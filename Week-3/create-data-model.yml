@@ -1,0 +1,10 @@
+#
+# Create the data model in nodes.yml from file fabric.yml
+#
+---
+
+- hosts: ios
+  vars_files: [ fabric.yml ]
+  tasks:  
+    - name: Generate the node.yml file
+      template: src=model/nodes.j2 dest=./nodes.yml

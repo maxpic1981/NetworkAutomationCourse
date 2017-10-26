@@ -1,0 +1,30 @@
+---
+location: rack-3
+id: 3 
+ports:
+  0: 
+    interface: 'fastethernet0/0'
+    description: 'Lien PE1-P2'
+    ip_address:  10.1.0.18
+    mask:     255.255.255.252
+    subnet:     10.1.0.16
+    mask_ospf:  3
+    area:   0
+    mpls: 'yes'
+  1: 
+    interface: 'fastethernet0/1'
+    description: 'Lien PE1-P1'
+    ip_address:  10.1.0.6
+    mask:     255.255.255.252
+    subnet:     10.1.0.4
+    mask_ospf:  3
+    area:   0
+    mpls: 'yes'
+  2: 
+    interface: 'loopback0'
+    description: 'Loopback0'
+    ip_address:  3.3.3.3
+    mask:     255.255.255.255
+    subnet:     3.3.3.3
+    mask_ospf:  0
+    area:   3
