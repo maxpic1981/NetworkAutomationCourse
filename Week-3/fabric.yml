@@ -4,24 +4,39 @@
 ---
 
 connections:
-  - {left: P1, left_ip: 10.1.0.9, left_port: FastEthernet0/0,
-     right: PE-2, right_ip: 10.1.0.10, right_port: FastEthernet0/0}
-  - {left: PE-1, left_ip: 10.1.0.6, left_port: FastEthernet0/1,
-     right: P1, right_ip: 10.1.0.5, right_port: FastEthernet0/1}
-  - {left: P2, left_ip: 10.1.0.17, left_port: FastEthernet0/0,
-     right: PE-1, right_ip: 10.1.0.18, right_port: FastEthernet0/0}
-  - {left: PE-2, left_ip: 10.1.0.14, left_port: FastEthernet0/1,
-     right: P2, right_ip: 10.1.0.13, right_port: FastEthernet0/1}
-     
-     
+  - {left: S1, left_ipv6: "2620:0:1AF0:101::1", left_port: FastEthernet0/1,
+     right: LE2, right_ipv6: "2620:0:1AF0:101::2", right_port: FastEthernet0/0}
+  - {left: S2, left_ipv6: "2620:0:1AF0:103::1", left_port: FastEthernet0/1,
+     right: LE2, right_ipv6: "2620:0:1AF0:103::2", right_port: FastEthernet0/1}
+  - {left: LE1, left_ipv6: "2620:0:1AF0:102::2", left_port: FastEthernet0/1,
+     right: S2, right_ipv6: "2620:0:1AF0:102::1", right_port: FastEthernet0/0}
+  - {left: LE1, left_ipv6: "2620:0:1AF0:100::2", left_port: FastEthernet0/0,
+     right: S1, right_ipv6: "2620:0:1AF0:100::1", right_port: FastEthernet0/0}  
+  - {left: HOST-1, left_ipv6: "2620:0:1AF0:200::2", left_port: FastEthernet0/0,
+     right: LE1, right_ipv6: "2620:0:1AF0:200::1", right_port: FastEthernet2/0}
+  - {left: LE2, left_ipv6: "2620:0:1AF0:201::1", left_port: FastEthernet2/0,
+     right: HOST-1, right_ipv6: "2620:0:1AF0:201::2", right_port: FastEthernet0/1}
+ 
 services: [ IPv4 ]
 
 nodes:
-  - name: P1
-    Lo0:  1.1.1.1
-  - name: P2
-    Lo0:  2.2.2.2
-  - name: PE-1
-    Lo0:  3.3.3.3
-  - name: PE-2
-    Lo0:  4.4.4.4
+  - name: S1
+    rid:  1.1.1.1
+    mngt_int:  FastEthernet1/0
+    mngt_ipv4:   10.0.10.11
+  - name: S2
+    rid:  2.2.2.2
+    mngt_int:  FastEthernet1/0
+    mngt_ipv4:   10.0.10.12
+  - name: LE1
+    rid:  3.3.3.3
+    mngt_int:  FastEthernet1/0
+    mngt_ipv4:   10.0.10.13
+  - name: LE2
+    rid:  4.4.4.4
+    mngt_int:  FastEthernet1/0
+    mngt_ipv4:   10.0.10.14
+  - name: HOST-1
+    rid:  5.5.5.5
+    mngt_int:  FastEthernet1/0
+    mngt_ipv4:   10.0.10.15

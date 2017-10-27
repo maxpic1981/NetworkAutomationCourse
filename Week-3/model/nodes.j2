@@ -1,0 +1,22 @@
+---
+
+nodes:
+{% for node in nodes %}
+ {{node.name}}:
+   rid: {{node.rid}}
+   
+   interfaces:
+{% for link in connections %}
+{% 	if link.left == node.name %}
+{% 	  if link.left_ipv6 is defined %}
+     {{link.left_port}}:   { ipv6: "{{link.left_ipv6}}" }
+{%    endif %}
+{% 	elif link.right == node.name %}
+{% 	  if link.right_ipv6 is defined %}
+     {{link.right_port}}:   { ipv6: "{{link.right_ipv6}}" }
+{% 	  endif %}
+{% 	endif %}
+{% endfor %}
+     {{node.mngt_int}}:   { ip: {{node.mngt_ipv4}} }
+
+{% endfor %}

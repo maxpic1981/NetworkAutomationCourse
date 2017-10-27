@@ -1,0 +1,45 @@
+---
+
+nodes:
+ S1:
+   rid: 1.1.1.1
+   
+   interfaces:
+     FastEthernet0/1:   { ipv6: "2620:0:1AF0:101::1" }
+     FastEthernet0/0:   { ipv6: "2620:0:1AF0:100::1" }
+     FastEthernet1/0:   { ip: 10.0.10.11 }
+
+ S2:
+   rid: 2.2.2.2
+   
+   interfaces:
+     FastEthernet0/1:   { ipv6: "2620:0:1AF0:103::1" }
+     FastEthernet0/0:   { ipv6: "2620:0:1AF0:102::1" }
+     FastEthernet1/0:   { ip: 10.0.10.12 }
+
+ LE1:
+   rid: 3.3.3.3
+   
+   interfaces:
+     FastEthernet0/1:   { ipv6: "2620:0:1AF0:102::2" }
+     FastEthernet0/0:   { ipv6: "2620:0:1AF0:100::2" }
+     FastEthernet2/0:   { ipv6: "2620:0:1AF0:200::1" }
+     FastEthernet1/0:   { ip: 10.0.10.13 }
+
+ LE2:
+   rid: 4.4.4.4
+   
+   interfaces:
+     FastEthernet0/0:   { ipv6: "2620:0:1AF0:101::2" }
+     FastEthernet0/1:   { ipv6: "2620:0:1AF0:103::2" }
+     FastEthernet2/0:   { ipv6: "2620:0:1AF0:201::1" }
+     FastEthernet1/0:   { ip: 10.0.10.14 }
+
+ HOST-1:
+   rid: 5.5.5.5
+   
+   interfaces:
+     FastEthernet0/0:   { ipv6: "2620:0:1AF0:200::2" }
+     FastEthernet0/1:   { ipv6: "2620:0:1AF0:201::2" }
+     FastEthernet1/0:   { ip: 10.0.10.15 }
+

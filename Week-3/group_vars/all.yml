@@ -1,11 +1,10 @@
 ---
 snmp_community: test
 snmp_contact: test@test.com
-snmp_host: 10.10.10.10
-syslog_host: 20.20.20.20
-loopback0_subnet: 10.98.0
+snmp_host: 2620:0:1AF0:DC00::140
+syslog_host: 2620:0:1AF0:DC00::250
 domain: n.ulaval.ca
-ospf_process: 100
+
 cli:
    username: automate
    password: setuplab
