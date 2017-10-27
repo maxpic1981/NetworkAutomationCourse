@@ -1,0 +1,21 @@
+---
+
+- hosts: ios
+  vars_files: [ nodes.yml ]
+  tasks:
+    - name: Generate common configuration
+      template: src=templates/config-common.j2 dest=configs/common-{{inventory_hostname}}.cfg
+
+    - name: Generate interfaces configuration
+      template: src=templates/config-interfaces.j2 dest=configs/interfaces-{{inventory_hostname}}.cfg
+
+    - name: Remove config files 
+      file: path=configs/Config-{{inventory_hostname}}.cfg state=absent
+    
+    - name: Assemble all configuration
+      assemble: src=configs/ dest=configs/Config-{{inventory_hostname}}.cfg regexp="{{inventory_hostname}}.cfg"
+    
+    - name: Clean file configuration
+      file: path=configs/common-{{inventory_hostname}}.cfg state=absent
+    - name: Clean file configuration
+      file: path=configs/interfaces-{{inventory_hostname}}.cfg state=absent 

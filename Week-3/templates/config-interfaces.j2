@@ -1,0 +1,13 @@
+{% for node,inv in nodes|dictsort %}
+{%   if inventory_hostname == node %}
+{%     for int,def in inv.interfaces|dictsort %}
+interface {{int}}
+{% 	  if def.ipv6 is defined %}
+ ipv6 address {{def.ipv6}}/64
+{%    else %}
+ ip address {{def.ip}} 255.255.255.0
+{%   endif %}
+ no shutdown
+{%     endfor %}
+{%   endif %}
+{% endfor %}

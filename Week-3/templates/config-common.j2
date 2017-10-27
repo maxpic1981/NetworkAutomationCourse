@@ -1,0 +1,19 @@
+!
+hostname {{inventory_hostname}}
+!
+no ip domaine lookup
+ip domain name {{ domain }}
+!
+!
+logging host {{syslog_host}}
+!
+no ip http server
+no ip http secure-server
+!
+snmp-server community {{snmp_community}} RO
+snmp-server location {{location}}
+snmp-server contact {{snmp_contact}}
+snmp-server chassis-id
+snmp-server host {{snmp_host}} {{snmp_community}}
+!
+!
