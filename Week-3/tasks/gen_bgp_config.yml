@@ -1,0 +1,7 @@
+---
+
+- hosts: ios
+  vars_files: [ ../nodes.yml ]
+  tasks:
+    - name: Generate BGP configuration
+      template: src=../templates/config-bgp.j2 dest=../configs/bgp-{{inventory_hostname}}.cfg
