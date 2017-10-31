@@ -1,8 +1,8 @@
 ---
 snmp_community: test
 snmp_contact: test@test.com
-snmp_host: 2620:0:1AF0:DC00::140
-syslog_host: 2620:0:1AF0:DC00::250
+snmp_host: 10.0.10.2
+syslog_host: 10.0.10.2
 domain: n.ulaval.ca
 
 cli:

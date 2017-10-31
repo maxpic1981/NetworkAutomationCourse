@@ -8,7 +8,7 @@
 
     - name: Generate interfaces configuration
       template: src=templates/config-interfaces.j2 dest=configs/interfaces-{{inventory_hostname}}.cfg
-
+      
     - name: Remove config files 
       file: path=configs/Config-{{inventory_hostname}}.cfg state=absent
     

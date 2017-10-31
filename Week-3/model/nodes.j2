@@ -4,19 +4,33 @@ nodes:
 {% for node in nodes %}
  {{node.name}}:
    rid: {{node.rid}}
+   as: {{node.bgp}} 
    
    interfaces:
 {% for link in connections %}
 {% 	if link.left == node.name %}
-{% 	  if link.left_ipv6 is defined %}
-     {{link.left_port}}:   { ipv6: "{{link.left_ipv6}}" }
+{% 	  if link.left_ipv4 is defined %}
+     {{link.left_port}}:   { ipv4: {{link.left_ipv4}}  }
 {%    endif %}
 {% 	elif link.right == node.name %}
-{% 	  if link.right_ipv6 is defined %}
-     {{link.right_port}}:   { ipv6: "{{link.right_ipv6}}" }
+{% 	  if link.right_ipv4 is defined %}
+     {{link.right_port}}:   { ipv4: {{link.right_ipv4}} }
 {% 	  endif %}
 {% 	endif %}
 {% endfor %}
-     {{node.mngt_int}}:   { ip: {{node.mngt_ipv4}} }
+     {{node.mngt_int}}:   { ipv4: {{node.mngt_ipv4}} }
+
+   ebgp:
+{% for link in connections %}
+{% 	if link.left == node.name %}
+{% 	  if link.right is defined %}
+     {{link.right}}:   { ipv4: {{link.right_ipv4}}, neighbor_as: {{link.right_as}}  }
+{%    endif %}
+{% 	elif link.right == node.name %}
+{% 	  if link.left_ipv4 is defined %}
+     {{link.left}}:   { ipv4: {{link.left_ipv4}}, neighbor_as: {{link.left_as}}  }
+{% 	  endif %}
+{% 	endif %}
+{% endfor %}
 
 {% endfor %}
