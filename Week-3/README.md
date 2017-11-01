@@ -2,22 +2,24 @@
 
 ## **Overview**
 
+The ansible playbooks in this directory is to generate the data model and the configurations files for each node. It use a simple leaf and spine topology. 
+
 ![Data model diagram](https://github.com/maxpic1981/NetworkAutomationCourse/blob/master/Week-3/Leaf%20and%20Spine%20-%20GNS3.png "GNS3 Leaf and Spine diagram")
 
-The nasible playbooks inside this github is to generate the configuration for a leaf and spine architecture. 
 
 ## **Data model**
 
-Infrastructure data model is in the file fabric.yml and must contains the following field:
+Infrastructure data model is in the file *fabric.yml* and contains the following field:
 
-* **Links:** Details about the links between the equipement.
+* **Links:** Details about the links between the node. (*left, right, as, ipv4 address, ports*)
 * **Nodes:** Details about the node. (*name, router-id, management ip, management interface, bgp asn*)
 
-Service data model is in the file
+There is no service playbook because the information related to the service are include in the fabric.yml file (bgp as). 
+
 
 ## Playbooks:
 
-Differents playbooks are available:
+The following playbooks is use to generate the data model and the nodes configurations:
 
 * **create-data-model.yml:** generathe the file **nodes.yml* that contain the data model representation for each nodes.
 
@@ -41,6 +43,8 @@ nodes:
 ```
 
 * **gen_base_config.yml:** Generate the base configuration and the interface configuration based from the *nodes.yml* file.
+
+* **gen_bgp_config.yml:** Service playbook that generate the bgp configuration for each nodes based from the *nodes.yml* file.
 
 
 

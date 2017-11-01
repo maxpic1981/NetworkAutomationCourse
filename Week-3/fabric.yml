@@ -16,8 +16,6 @@ connections:
      right: LE1, right_as: 65101, right_ipv4: 10.0.101.1, right_port: FastEthernet2/0}
   - {left: LE2, left_as: 65102, left_ipv4: 10.0.102.1, left_port: FastEthernet2/0,
      right: HOST-1, right_as: 65201, right_ipv4: 10.0.102.2, right_port: FastEthernet0/1}
- 
-services: [ IPv4 ]
 
 nodes:
   - name: S1
@@ -43,5 +41,5 @@ nodes:
   - name: HOST-1
     rid:  5.5.5.5
     mngt_int:  FastEthernet1/0
-    mngt_ipv4:   10.0.10.15
+    mngt_ipv4:    10.0.10.15
     bgp: 65201
