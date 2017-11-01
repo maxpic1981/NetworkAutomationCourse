@@ -10,7 +10,7 @@ nodes:
 {% for link in connections %}
 {% 	if link.left == node.name %}
 {% 	  if link.left_ipv4 is defined %}
-     {{link.left_port}}:   { ipv4: {{link.left_ipv4}}  }
+     {{link.left_port}}:   { ipv4: {{link.left_ipv4}} }
 {%    endif %}
 {% 	elif link.right == node.name %}
 {% 	  if link.right_ipv4 is defined %}
@@ -18,17 +18,17 @@ nodes:
 {% 	  endif %}
 {% 	endif %}
 {% endfor %}
-     {{node.mngt_int}}:   { ipv4: {{node.mngt_ipv4}} }
+     {{node.mngt_int}}:   { ipv4: {{node.mngt_ipv4}}, role: mngt }
 
    ebgp:
 {% for link in connections %}
 {% 	if link.left == node.name %}
 {% 	  if link.right is defined %}
-     {{link.right}}:   { ipv4: {{link.right_ipv4}}, neighbor_as: {{link.right_as}}  }
+     {{link.right}}:   { neighbor_ipv4: {{link.right_ipv4}}, neighbor_as: {{link.right_as}}  }
 {%    endif %}
 {% 	elif link.right == node.name %}
 {% 	  if link.left_ipv4 is defined %}
-     {{link.left}}:   { ipv4: {{link.left_ipv4}}, neighbor_as: {{link.left_as}}  }
+     {{link.left}}:   { neighbor_ipv4: {{link.left_ipv4}}, neighbor_as: {{link.left_as}}  }
 {% 	  endif %}
 {% 	endif %}
 {% endfor %}

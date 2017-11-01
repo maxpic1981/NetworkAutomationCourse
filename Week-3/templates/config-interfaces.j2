@@ -4,7 +4,9 @@
 interface {{int}}
 {% 	  if def.ipv6 is defined %}
  ipv6 address {{def.ipv6}}/64
-{%    else %}
+{%    elif  def.role is defined  %}
+ ip address {{def.ipv4}} 255.255.255.0
+{%    else  %}
  ip address {{def.ipv4}} 255.255.255.252
 {%   endif %}
  no shutdown

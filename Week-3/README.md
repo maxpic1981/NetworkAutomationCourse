@@ -44,7 +44,7 @@ nodes:
 
 * **gen_base_config.yml:** Generate the base configuration and the interface configuration based from the *nodes.yml* file.
 
-* **gen_bgp_config.yml:** Service playbook that generate the bgp configuration for each nodes based from the *nodes.yml* file.
+* **tasks/gen_bgp_config.yml:** Service playbook that generate the bgp configuration for each nodes based from the *nodes.yml* file.
 
 
 

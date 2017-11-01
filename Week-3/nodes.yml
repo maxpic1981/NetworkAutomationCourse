@@ -6,41 +6,41 @@ nodes:
    as: 65001 
    
    interfaces:
-     FastEthernet0/1:   { ipv4: 10.0.12.1  }
+     FastEthernet0/1:   { ipv4: 10.0.12.1 }
      FastEthernet0/0:   { ipv4: 10.0.11.1 }
-     FastEthernet1/0:   { ipv4: 10.0.10.11 }
+     FastEthernet1/0:   { ipv4: 10.0.10.11, role: mngt }
 
    ebgp:
-     LE2:   { ipv4: 10.0.12.2, neighbor_as: 65102  }
-     LE1:   { ipv4: 10.0.11.2, neighbor_as: 65101  }
+     LE2:   { neighbor_ipv4: 10.0.12.2, neighbor_as: 65102  }
+     LE1:   { neighbor_ipv4: 10.0.11.2, neighbor_as: 65101  }
 
  S2:
    rid: 2.2.2.2
    as: 65002 
    
    interfaces:
-     FastEthernet0/1:   { ipv4: 10.0.22.1  }
+     FastEthernet0/1:   { ipv4: 10.0.22.1 }
      FastEthernet0/0:   { ipv4: 10.0.21.1 }
-     FastEthernet1/0:   { ipv4: 10.0.10.12 }
+     FastEthernet1/0:   { ipv4: 10.0.10.12, role: mngt }
 
    ebgp:
-     LE2:   { ipv4: 10.0.22.2, neighbor_as: 65102  }
-     LE1:   { ipv4: 10.0.21.2, neighbor_as: 65101  }
+     LE2:   { neighbor_ipv4: 10.0.22.2, neighbor_as: 65102  }
+     LE1:   { neighbor_ipv4: 10.0.21.2, neighbor_as: 65101  }
 
  LE1:
    rid: 3.3.3.3
    as: 65101 
    
    interfaces:
-     FastEthernet0/1:   { ipv4: 10.0.21.2  }
-     FastEthernet0/0:   { ipv4: 10.0.11.2  }
+     FastEthernet0/1:   { ipv4: 10.0.21.2 }
+     FastEthernet0/0:   { ipv4: 10.0.11.2 }
      FastEthernet2/0:   { ipv4: 10.0.101.1 }
-     FastEthernet1/0:   { ipv4: 10.0.10.13 }
+     FastEthernet1/0:   { ipv4: 10.0.10.13, role: mngt }
 
    ebgp:
-     S2:   { ipv4: 10.0.21.1, neighbor_as: 65002  }
-     S1:   { ipv4: 10.0.11.1, neighbor_as: 65001  }
-     HOST-1:   { ipv4: 10.0.101.2, neighbor_as: 65201  }
+     S2:   { neighbor_ipv4: 10.0.21.1, neighbor_as: 65002  }
+     S1:   { neighbor_ipv4: 10.0.11.1, neighbor_as: 65001  }
+     HOST-1:   { neighbor_ipv4: 10.0.101.2, neighbor_as: 65201  }
 
  LE2:
    rid: 4.4.4.4
@@ -49,24 +49,24 @@ nodes:
    interfaces:
      FastEthernet0/0:   { ipv4: 10.0.12.2 }
      FastEthernet0/1:   { ipv4: 10.0.22.2 }
-     FastEthernet2/0:   { ipv4: 10.0.102.1  }
-     FastEthernet1/0:   { ipv4: 10.0.10.14 }
+     FastEthernet2/0:   { ipv4: 10.0.102.1 }
+     FastEthernet1/0:   { ipv4: 10.0.10.14, role: mngt }
 
    ebgp:
-     S1:   { ipv4: 10.0.12.1, neighbor_as: 65001  }
-     S2:   { ipv4: 10.0.22.1, neighbor_as: 65002  }
-     HOST-1:   { ipv4: 10.0.102.2, neighbor_as: 65201  }
+     S1:   { neighbor_ipv4: 10.0.12.1, neighbor_as: 65001  }
+     S2:   { neighbor_ipv4: 10.0.22.1, neighbor_as: 65002  }
+     HOST-1:   { neighbor_ipv4: 10.0.102.2, neighbor_as: 65201  }
 
  HOST-1:
    rid: 5.5.5.5
    as: 65201 
    
    interfaces:
-     FastEthernet0/0:   { ipv4: 10.0.101.2  }
+     FastEthernet0/0:   { ipv4: 10.0.101.2 }
      FastEthernet0/1:   { ipv4: 10.0.102.2 }
-     FastEthernet1/0:   { ipv4: 10.0.10.15 }
+     FastEthernet1/0:   { ipv4: 10.0.10.15, role: mngt }
 
    ebgp:
-     LE1:   { ipv4: 10.0.101.1, neighbor_as: 65101  }
-     LE2:   { ipv4: 10.0.102.1, neighbor_as: 65102  }
+     LE1:   { neighbor_ipv4: 10.0.101.1, neighbor_as: 65101  }
+     LE2:   { neighbor_ipv4: 10.0.102.1, neighbor_as: 65102  }
 

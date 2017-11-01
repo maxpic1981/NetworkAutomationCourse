@@ -2,14 +2,14 @@
 {%   if inventory_hostname == node %}
 router bgp {{inv.as}}
 {%     for neighbor,def in inv.ebgp|dictsort %}
-{% 	     if def.ipv4 is defined %}
- neighbor {{def.ipv4}} remote-as {{def.neighbor_as}}
+{% 	     if def.neighbor_ipv4 is defined %}
+ neighbor {{def.neighbor_ipv4}} remote-as {{def.neighbor_as}}
 {%       endif %}
 {%     endfor %}
 address-family ipv4
 {%     for neighbor,def in inv.ebgp|dictsort %}
-{% 	     if def.ipv4 is defined %}
- neighbor {{def.ipv4}} activate
+{% 	     if def.neighbor_ipv4 is defined %}
+ neighbor {{def.neighbor_ipv4}} activate
 {%       endif %}
 {%     endfor %}
 {%   endif %}
